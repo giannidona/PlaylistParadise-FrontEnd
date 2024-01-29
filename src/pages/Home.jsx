@@ -1,5 +1,7 @@
-import React from "react";
-
 export default function Home() {
-  return <h1>HOME</h1>;
+  return (
+    <section>
+      <h1 className="text-center text-white">HOME</h1>
+    </section>
+  );
 }

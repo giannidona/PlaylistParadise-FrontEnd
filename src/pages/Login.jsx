@@ -6,18 +6,29 @@ import { Link, useNavigate } from "react-router-dom";
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:8080/login", {
-        username,
-        password,
+      .post(
+        "http://localhost:8080/login",
+        {
+          username,
+          password,
+        },
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        if (res.data) {
+          navigate("/home");
+        } else {
+          navigate("/login");
+        }
       })
-      .then((res) => console.log(res))
       .catch((err) => console.log(err));
-    navigate("/home");
   };
   return (
     <section className="flex items-center justify-center h-screen">
