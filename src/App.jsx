@@ -1,14 +1,13 @@
-import { Routes, Route } from "react-router-dom";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import CreatePost from "./pages/CreatePost";
 import Home from "./pages/Home";
 
 function App() {
   return (
     <Routes>
-      <Route path="/register" element={<Register />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/home" element={<Home />} />
+      <Route path="/" element={<Home />} />
+      <Route path="/create" element={<CreatePost />} />
     </Routes>
   );
 }
