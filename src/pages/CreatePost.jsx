@@ -19,17 +19,23 @@ export default function CreatePost() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="link"
-          value={link}
-          name="playlistLink"
-          id="playlistLink"
-          onChange={(e) => setLink(e.target.value)}
-        />
-        <button type="submit">Enviar</button>
+    <div className="w-4/5 mx-auto">
+      <form className="text-center my-10" onSubmit={handleSubmit}>
+        <div>
+          <input
+            type="text"
+            placeholder="link"
+            value={link}
+            name="playlistLink"
+            id="playlistLink"
+            onChange={(e) => setLink(e.target.value)}
+          />
+        </div>
+        <div>
+          <button className="text-white font-bold text-xl" type="submit">
+            Enviar
+          </button>
+        </div>
       </form>
     </div>
   );

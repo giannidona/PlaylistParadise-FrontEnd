@@ -2,13 +2,17 @@ import { Link } from "react-router-dom";
 
 export const NavBar = () => {
   return (
-    <nav>
-      <ul>
+    <nav className="bg-white">
+      <ul className="flex justify-evenly">
         <li>
-          <Link to="/">Home</Link>
+          <Link className="font-bold text-lg" to="/">
+            Home
+          </Link>
         </li>
         <li>
-          <Link to="/create">Create Post</Link>
+          <Link className="font-bold text-lg" to="/create">
+            Create Post
+          </Link>
         </li>
       </ul>
     </nav>
