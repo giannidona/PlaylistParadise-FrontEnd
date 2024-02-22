@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import SearchBar from "../components/SearchBar";
 
 export default function Home() {
   const [playlistData, setPlaylistData] = useState([]);
+  const [originalPlaylistData, setOriginalPlaylistData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,6 +19,7 @@ export default function Home() {
             return {
               link: match[0],
               id: playlist._id,
+              playlistName: playlist.playlistName,
             };
           } else {
             console.log(
@@ -27,8 +30,8 @@ export default function Home() {
           }
         });
 
-        console.log(playlistLinks);
         setPlaylistData(playlistLinks.filter(Boolean));
+        setOriginalPlaylistData(playlistLinks.filter(Boolean));
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -49,8 +52,17 @@ export default function Home() {
     }
   };
 
+  const handleSearch = (query) => {
+    const filteredPlaylists = originalPlaylistData.filter((playlist) =>
+      playlist.playlistName.includes(query)
+    );
+
+    setPlaylistData(filteredPlaylists);
+  };
+
   return (
     <>
+      <SearchBar onSearch={handleSearch} />
       <section className="grid grid-cols-3 w-11/12 mx-auto">
         {playlistData.map((playlist, index) => (
           <div className="mx-auto" key={index}>
